@@ -1,0 +1,201 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt, b5paper, onecolumn]{article}
+\usepackage{fancyref, graphicx, layout, amsmath, amssymb, titletoc, upquote, fancyvrb, calc, tabularx, rotating, booktabs, tabularx, rotating}
+
+\usepackage{array}
+\newcolumntype{$}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+  #1\ignorespaces
+}
+%\usepackage[table,cmyk]{xcolor}
+%\definecolor{light-gray}{gray}{0.9}
+
+%\usepackage{ftnright}
+%\usepackage[]{footmisc}
+\usepackage[flushmargin]{footmisc}
+\let\oldfootnote\footnote
+\renewcommand{\footnote}[1]{\hspace{-0.6em}\oldfootnote{\scriptsize\raggedright\hyphenpenalty=10000
+\exhyphenpenalty=10000 #1}\hspace{0.6em}}
+
+\usepackage[vmargin={15mm}, width=33em, nohead, includeheadfoot]{geometry}
+\linespread{1.2}
+\renewcommand*{\arraystretch}{1}
+
+\usepackage[%
+  indentfirst=false,
+  CJKmath=true,
+  CJKglue={\hskip 0\baselineskip plus .05\baselineskip minus .0\baselineskip},
+%  CJKecglue={\hskip 0.2em plus 0.25em minus 0.02em},
+%  xCJKecglue={\hskip 0.2em plus 0.25em minus 0.02em},
+%  CheckSingle=true,
+  PunctStyle={quanjiao}
+]{xeCJK}
+\setlength{\parindent}{2em}
+%\usepackage{txfonts}
+\usepackage[math-style=TeX]{unicode-math}
+\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{latinmodern-math.otf}
+%\setmathfont{xits-math.otf}
+%\setmathfont{TeX Gyre Termes Math}
+%\setmathfont{STIX Math}
+%\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[
+	Mapping=tex-text,
+%	HyphenChar="2010,
+%	PunctuationSpace=3,
+%	BoldFont={Source Sans Pro Semibold},
+%	BoldFont={Liberation Sans Bold},
+	BoldFont={Latin Modern Sans 10 Bold},
+%	BoldFont={DejaVu Sans Bold},
+%	BoldFont={TeX Gyre Heros Bold},
+%	BoldFeatures={Scale=MatchUppercase},
+	RawFeature=+kern;+liga;,
+%	SmallCapsFont={Latin Modern Roman Caps}
+%]{DejaVu Serif}
+]{Latin Modern Roman}
+%]{Liberation Serif}
+%]{TeX Gyre Termes}
+\setsansfont[
+	Mapping=tex-text,
+%	Scale=MatchUppercase,
+%	HyphenChar="2010,
+%	PunctuationSpace=3,
+	RawFeature=+kern;+liga;,
+%]{Liberation Sans}
+%]{DejaVu Sans}
+]{Source Sans Pro}
+\setmonofont[
+	Ligatures=NoCommon,
+%	SlantedFont={Latin Modern Mono Slanted},
+%	Scale=1,
+%	Scale=MatchUppercase,
+%	BoldFont={Source Code Pro Semibold},
+%	ItalicFont={Latin Modern Mono Slanted},
+%	LetterSpace=-3,
+%	FakeStretch=0.86,
+%	SizeFeatures={
+%		{Size=-9, OpticalSize=8 },
+%		{Size= 9-10, OpticalSize=9},
+%		{Size= 10-12, OpticalSize=12},
+%		{Size= 12-, OpticalSize=12}
+%	}
+%	SizeFeatures={%
+%		{Size=-9, OpticalSize=8},%
+%		{Size=9-10, OpticalSize=9},%
+%		{Size=10-12, OpticalSize=10, Font={Latin Modern Mono Light}},%
+%		{Size=12-, OpticalSize=12, Font={Latin Modern Mono Light}}%
+%	}%
+%]{Liberation Mono}
+%]{Source Code Pro Light}
+%]{DejaVu Sans Mono}
+]{Latin Modern Mono}
+%]{TeX Gyre Cursor}
+\setCJKmainfont[
+%	FakeStretch=1.02,
+%	Scale=1.0,
+	BoldFont={cwTeX Q Hei},
+%	BoldFeatures={Scale=1.1},
+%%	BoldItalicFont={AR Yankai Ultra B5},
+%	ItalicFont={AR PL New Kai},
+%]{ARQ Ming}
+%]{AR PL New Sung BL}
+]{cwTeX Q Ming}
+\setCJKsansfont[
+%	FakeStretch=1.02,
+%	Scale=1.1,
+%	BoldFont={cwTeX Q Hei},
+%%	BoldFeatures={FakeBold=0.8},
+%%	BoldItalicFont={AR Yankai Ultra B5},
+%	ItalicFont={cwTeX Q Kai},
+%]{ARQ Ming}
+]{cwTeX Q Yuan}
+\setCJKmonofont[
+%	Scale=1.15,
+%	BoldFont={cwTeX Q Hei},
+%%	BoldFeatures={FakeBold=0.8},
+%%	BoldItalicFont={AR Yankai Ultra B5},
+%	ItalicFont={cwTeX Q Kai},
+%]{ARQ Ming}
+]{cwTeX Q Fangsong}
+
+\newcommand{\myglue}{\hskip 0.2em plus 0.2em\ignorespaces}
+\renewcommand{\nobreakspace}{\nobreak{\myglue}}
+\newcommand{\nbs}{\myglue}
+\CJKsetecglue{\nbs}
+
+
+\usepackage[
+%	pdfdirection={L2R},
+	bookmarks=true,
+	colorlinks=true,
+	pageanchor=true,
+	linktocpage=true,
+	hyperfootnotes=true,
+	breaklinks=true,
+	pdflang={zh-TW},
+	pdfprintscaling={none},
+	pdfdisplaydoctitle=true,
+%	bookmarksopen=true,
+%	bookmarksopenlevel=2,
+%	pdftex,
+%	unicode=true,
+	xetex,
+%	bookmarksnumbered=true,
+	pdfstartview={XYZ null null 1},
+	pdfpagelayout={OneColumn},
+%	pdfpagelayout={TwoColumnRight},
+	pdfpagemode={UseOutlines},
+	%linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue,
+	pdfborder={0 0 1},
+	pdfauthor={Chen-Pan Liao},
+	pdftitle={《R 演習室》系列影片簡介},
+%	pdfsubject={統計學},
+%	pdfcreator={LaTeX with pslatex},
+%	pdfkeywords={statistics, R},
+	pdftrapped={Unknown},
+	pdfinfo={License={Creative Commons Attribution-ShareAlike 3.0 Unported License (see http://creativecommons.org/licenses/by-sa/3.0/)}}
+]{hyperref}
+
+
+
+\usepackage[]{titlesec}
+\titleformat{\section}[hang]{%
+  \large\bfseries%
+}{\thesection}{15pt}{}[]
+\titlespacing*{\section}{0pt}{2ex}{1ex}
+
+\begin{document}
+
+\title{\Large 《R 演習室》系列影片簡介}
+\author{Chen-Pan Liao \texttt{<}\url{andrew.43@gmail.com}\texttt{>}}
+\date{ 西元2015年5月}
+\maketitle
+
+\begin{center}
+\footnotesize 本文件永久位址為\\ \url{https://drive.google.com/file/d/0B0E2FRIvjDDoOE8zMjJ2eTBrc3M/edit?usp=sharing}\\ 歡迎取得最新版本。
+\end{center}
+
+\section{宣言}
+
+《R 演習室》系列影片（以下簡稱為本系列影片）是R語言在統計學上應用的教學影片，由Chen-Pan Liao於2012至2013年間製作，內容主要是利用R進行常見的統計分析或檢定，預設觀眾是最初階的R使用者。
+
+除非另有聲明，本文件（《R 演習室》系列影片簡介）及本系列影片一律以\nbs{}\href{http://creativecommons.org/licenses/by-sa/3.0/}{Creative Commons Attribution-ShareAlike 3.0 Unported License}\nbs{}授權。\footnote{CC BY-SA 3.0網址為\nbs{}\url{http://creativecommons.org/licenses/by-sa/3.0/}\label{ccbysa}}歡迎在該授權的規範下重製、散布、傳輸、修改或販售這些影片。
+
+本系列影片之作者並不保證所有影片內容的正確性，請勿完全依賴影片內容以進行專業工作。
+
+\section{下載影片檔}
+本系列影片檔已置於GitHub空間中供人下載。\footnote{影片下載網址為\nbs{}\url{https://github.com/chenpanliao/r-demo-videos/archive/master.zip}}下載後對\texttt{r-demo-videos-master.zip}解壓縮，進入\texttt{r-demo-videos}資料夾，再以網頁瀏覽器開啟\texttt{r-demo-videos.html}即可。
+
+
+\section{線上觀看影片}
+你也可以直接在\nbs{}\href{http://www.youtube.com/playlist?list=PL5AC0ADBF65924EAD}{《R 演習室》播放清單 @ Youtube}\nbs{}直接觀看本系列影片，\footnote{Youtube播發清單網址為\nbs{}\url{http://www.youtube.com/playlist?list=PL5AC0ADBF65924EAD}}但可能出現廣告。
+
+
+
+
+
+
+
+\end{document}
